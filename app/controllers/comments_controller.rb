@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  http_basic_authenticate_with name: "root", password: "Abc12345", only: [:update, :destroy]
   before_action :find_comment, except: :create
   def create
     @article = Article.find(params[:article_id])
@@ -20,7 +21,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to article_path(@article)
   end
-  
+
   private
   def find_comment
     @article = Article.find(params[:article_id])

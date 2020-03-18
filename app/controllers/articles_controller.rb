@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  http_basic_authenticate_with name: "root", password: "Abc12345", except: [:index, :show]
   before_action :find_article, only: [:show, :edit, :update, :destroy]
   def index
     @articles = Article.all.order("created_at DESC")
