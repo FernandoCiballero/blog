@@ -24,6 +24,11 @@
   </p>
 
   <p>
+    <%= form.label :category_id %>
+    <%= form.collection_select(:category_id, Category.all, :id, :name,{prompt: "Select a category"},{class: "my-class", style: "color:blue; height: 30px; width: 200px"}) %>
+  </p>
+  
+  <p>
     <%= form.submit %>
   </p>
 

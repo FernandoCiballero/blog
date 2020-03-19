@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_010137) do
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.boolean "display"
+    t.boolean "display", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,15 +1,17 @@
-<h1>Listing Articles</h1>
+<h1>Listing Articles | <%= link_to "New category", new_category_path %></h1>
 
 <table>
   <tr>
     <th>Title</th>
     <th>Text</th>
+    <th>Category</th>
     <th>Actions</th>
   </tr>
   <% @articles.each do |article| %>
     <tr>
       <td><%= article.title %></td>
       <td><%= article.text %></td>
+      <td><%= article.category.name %></td>
       <td><%= link_to 'Show', article %></td>
       <td><%= link_to 'Edit', edit_article_path(article) %></td>
       <td><%= link_to 'Destroy', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %></td>
