@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, {class:"form-control", style:"height: 100px; resize: none;"} %>
   </div>
 
-  <div class="field">
-    <%= form.label :display %>
-    <%= form.check_box :display%>
+  <div class="field form-group form-check">
+    <%= form.check_box :display, class:"form-check-input"%>
+    <%= form.label :display, class:"form-check-label" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Submit", class:"btn btn-primary" %>
   </div>
 <% end %>

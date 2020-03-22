@@ -1,23 +1,47 @@
-<h1>Listing Articles | <%= link_to "New category", new_category_path %></h1>
+<!-- Page Content -->
+  <div class="container">
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th>Category</th>
-    <th>Actions</th>
-  </tr>
-  <% @articles.each do |article| %>
-    <tr>
-      <td><%= article.title %></td>
-      <td><%= article.text %></td>
-      <td><%= article.category.name %></td>
-      <td><%= link_to 'Show', article %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
-      <td><%= link_to 'Destroy', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
+    <div class="row">
 
-<p><%= link_to 'New article', new_article_path%></p>
-<p><%= link_to 'Back to root', controller: 'welcome'%></p>
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+        <h1 class="my-4">Articles List</h1>
+
+        <!-- Blog Post -->
+        <% @articles.each do |article| %>
+        <div class="card mb-4">
+          <%= image_tag(article.image_url, width: '900', height: '150', class: 'card-img-top') %>
+          <div class="card-body">
+            <h2 class="card-title"><%= article.title %></h2>
+            <p class="card-text text-primary">#<%= article.category.name %></p>
+            <p class="card-text"><%= truncate(article.text, length: 200) %>...</p>
+            <div>
+              <%= link_to 'Read More', article, class:"btn btn-primary" %> 
+              <% if user_signed_in? %>
+                <%= link_to 'Delete Article', article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, style:"float:right; margin-top: 8px" %>
+              <% end %>
+            </div>
+          </div>
+          <div class="card-footer text-muted">
+            Posted on <%= time_ago_in_words(article.created_at) %>
+          </div>
+        </div>
+        <% end %>
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+          <li class="page-item">
+            <a class="page-link" href="#">&larr; Older</a>
+          </li>
+          <li class="page-item disabled">
+            <a class="page-link" href="#">Newer &rarr;</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Sidebar Widgets Column -->
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->

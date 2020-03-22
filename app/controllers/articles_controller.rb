@@ -1,8 +1,9 @@
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: "root", password: "Abc12345", except: [:index, :show]
+  before_action :authenticate_user! , only: [:new, :create, :edit, :update, :destroy]
   before_action :find_article, only: [:show, :edit, :update, :destroy]
   def index
     @articles = Article.all.order("created_at DESC")
+    @categories = Category.all.order("created_at DESC")
   end
 
   def new
@@ -41,6 +42,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :text, :category_id)
+    params.require(:article).permit(:title, :text, :image_url, :category_id)
   end
 end

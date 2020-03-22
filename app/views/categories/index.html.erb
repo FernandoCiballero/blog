@@ -1,32 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <p id="notice"><%= notice %></p>
 
-<h1>Categories</h1>
+      <h2 class="title">Categories</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Display in navbar</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <td><%= category.description %></td>
-        <td><%= category.display %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Category', new_category_path %>
-<%= link_to "Back", articles_path %>
+      <div class="card">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Display in navbar</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @categories.each do |category| %>
+            <tr scope="row">
+              <td><%= category.name %></td>
+              <td><%= category.description %></td>
+              <td><%= category.display %></td>
+              <td><%= link_to 'Show', category, class:"link" %> |
+                <%= link_to 'Edit', edit_category_path(category), class: "link" %> |
+                <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class:"link" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+      <br>
+      <div class="my-4">
+        <%= link_to 'New Category', new_category_path %>
+        <%= link_to "Back", articles_path, class:"ml-3" %>
+      </div>
+    </div>
+  </div>
+</div>
