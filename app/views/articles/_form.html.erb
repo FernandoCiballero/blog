@@ -13,28 +13,28 @@
     </div>
   <% end %>
 
-  <p>
+  <div class="form-group">
     <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= form.label :image_url %><br>
-    <%= form.text_field :image_url %>
-  </p>
+    <%= form.text_field :image_url, class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= form.label :text %><br>
-    <%= form.text_area :text %>
-  </p>
+    <%= form.text_area :text, {class: "form-control", style: "height: 200px; resize: none;"} %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= form.label :category_id %>
-    <%= form.collection_select(:category_id, Category.all, :id, :name,{prompt: "Select a category"},{class: "my-class", style: "color:blue; height: 30px; width: 200px"}) %>
-  </p>
+    <%= form.collection_select(:category_id, Category.all, :id, :name,{prompt: "Select a category"},{class: "custom-select"}) %>
+  </div>
   
   <p>
-    <%= form.submit %>
+    <%= form.submit "Create Article", class: "btn btn-primary"%>
   </p>
 
 <% end %>

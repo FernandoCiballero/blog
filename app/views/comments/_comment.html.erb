@@ -1,15 +1,17 @@
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
+<div class="media mb-4">
+  <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+  <%= %>
+  <div class="media-body">
+    <h5 class="mt-0"><%= comment.commenter %></h5>
+    <p><%= comment.body %></p>
+    <% if user_signed_in? %>
+      <%= link_to "Edit comment", edit_article_comment_path(@article, comment), class: "link" %>
+      <%= link_to 'Destroy Comment', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: "link ml-3" %>
+    <% end %>
+  </div>
+  
+</div>
+        
+      
+        
 
-  <p>
-  <%= link_to "Edit comment", edit_article_comment_path(@article, comment) %>
-  <%= link_to 'Destroy Comment', [comment.article, comment],
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-  </p>  

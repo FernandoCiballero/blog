@@ -1,16 +1,53 @@
-<h2>Article detail</h2>
-<p><strong>Title:</strong><%= @article.title%></p>
-<p><strong>Text:</strong><%= @article.text%></p>
-<p><strong>Image:</strong><%= @article.image_url%></p>
-<p><strong>Category:</strong><%= @article.category.name%></p>
+<!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+        <!-- Title -->
+        <h1 class="mt-4"><%= @article.title%></h1>
+        <% if user_signed_in?%>
+          <%= link_to 'Edit', edit_article_path(@article) %>
+        <% end %>
+          <%= link_to 'Back', articles_path, class:"ml-2" %>
 
-<h2>Comments</h2>
+        <hr>
 
-  <%= render @article.comments %>
+        <!-- Date/Time -->
+        <p><%= time_ago_in_words(@article.created_at) %></p>
 
-<h2>Add a comment:</h2>
+        <hr>
 
-  <%= render 'comments/form' %>
+        <!-- Preview Image -->
+        <%= image_tag(@article.image_url, width: '900', height: '150', class: 'img-fluid rounded') %>
+        <p class="text-primary mt-2">#<%= @article.category.name%></p>
+        <hr>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+        <!-- Post Content -->
+        <p class="lead"><%= @article.text%></p>
+
+        <hr>
+        <!-- Single Comment -->
+
+        <%= render @article.comments %>
+        
+        <!-- Comments Form -->
+        <% if user_signed_in? %>
+        <div class="card my-4">
+          <h5 class="card-header">Leave a Comment:</h5>
+          <div class="card-body">
+              <%= render 'comments/form' %>
+          </div>
+        </div>
+        <% end %>
+
+        
+
+      
+      </div>
+      <!-- Sidebar Widgets Column -->
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->

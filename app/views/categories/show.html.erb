@@ -1,19 +1,28 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @category.description %>
-</p>
-
-<p>
-  <strong>Display in navbar:</strong>
-  <%= @category.display %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<div class="container">
+  <div class="row" style="margin-top: 5.7%; margin-bottom: 5.7%;">
+    <div class="col-md-8 m-auto">
+      <div class="card rounded-5">
+        <h2 class="card-title mx-auto my-3">Show Category</h2>
+        <div class="card-body">
+          <p id="notice"><%= notice %></p>
+            <h5 class="card-title">Name:</h5>
+            <p class="card-text"><%= @category.name %></p>
+                  
+            <h5 class="card-title">Description:</h5>
+            <p class="card-text"><%= @category.description %></p>
+          
+            <h5 class=" card-title">Display in navbar:</h5>
+            <p class="card-text"><%= @category.display %></p>
+          
+          <%= link_to 'Edit', edit_category_path(@category), class:"card-link" %>
+          <%= link_to 'Back', categories_path, class:"card-link" %>
+        </div>
+        <!--card-body-->
+      </div>
+      <!--card-->
+    </div>
+    <!--col-md-6-->
+  </div>
+  <!--row-->
+</div>
+<!--container>-->
