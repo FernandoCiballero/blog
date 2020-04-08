@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, exept: [:index, :show]
   before_action :find_category, only: [:show, :edit, :update, :destroy]
   def index
     @categories = Category.all.order("name DESC")

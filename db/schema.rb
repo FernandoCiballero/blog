@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_20_170231) do
+ActiveRecord::Schema.define(version: 2020_04_08_025012) do
 
   create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title"
@@ -19,7 +19,9 @@ ActiveRecord::Schema.define(version: 2020_03_20_170231) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id", null: false
     t.string "image_url"
+    t.integer "user_id"
     t.index ["category_id"], name: "index_articles_on_category_id"
+    t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
